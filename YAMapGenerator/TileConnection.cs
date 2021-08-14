@@ -30,6 +30,18 @@ namespace YAMapGenerator {
             return true;
         }
 
+        public int GetScore(Tile tile) {
+            var zipped = tile.Neighbours.Zip(Pattern);
+            int matched = 0;
+            foreach (var (node, match) in zipped) {
+                if (node == null && match == null)
+                    matched++;
+                if (node != null && node.Scheme != null && node.Scheme == match)
+                    matched++;
+            }
+            return matched;
+        }
+
         public new string ToString() {
             return $"TileConnection[Id={Tile.Id}; List={string.Join(',', Pattern.Select(a => a?.Id))}]";
         }

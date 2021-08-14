@@ -20,15 +20,6 @@ namespace YAMapGenerator {
             return items.Where(a => a.Tile == scheme);
         }
 
-        public bool Check(TileScheme scheme, Tile node) {
-            var availableConnections = Get(scheme);
-            foreach (var connection in availableConnections) {
-                if (connection.Check(node))
-                    return true;
-            }
-            return false;
-        }
-
         public new string ToString() {
             return $"TileConnectionContainer[{string.Join("\n", items.Select(a => a.ToString()))}]";
         }

@@ -11,5 +11,9 @@ namespace YAMapGenerator {
         public static Position operator +(Position a, Position b) {
             return new Position(a.X + b.X, a.Y + b.Y);
         }
+
+        public new string ToString() {
+            return $"Position[X={X};Y={Y};]";
+        }
     }
 }
